@@ -8,7 +8,7 @@ cd /usr/WCA_importer
 name=`curl https://www.worldcubeassociation.org/results/misc/export.html 2> /dev/null | grep -o -e '>WCA_export[0-9]*_[0-9]*.sql.zip' | sed 's/>//g'¥` 
 
 # Downloading WCA export if it's uploaded
-if test "$name" != `cat latest` -o -e latest
+if test "$name" != `cat latest` -o ! -e latest
 then 
   echo $name > latest
   wget https://www.worldcubeassociation.org/results/misc/${name}
